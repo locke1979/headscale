@@ -11,7 +11,9 @@ RUN npm install --global --omit=dev --fetch-retries=1 --fetch-timeout=30000 \
     "@hexsleeves/tailscale-mcp-server@${TAILSCALE_MCP_VERSION}" \
     && npm cache clean --force
 
+COPY --chmod=0555 docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
 USER node
 WORKDIR /home/node
 
-ENTRYPOINT ["tailscale-mcp-server"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

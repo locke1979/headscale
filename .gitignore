@@ -2,3 +2,5 @@
 .env.*
 !.env.example
 *.log
+secrets/*
+!secrets/.gitkeep

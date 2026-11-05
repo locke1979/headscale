@@ -26,10 +26,27 @@ docker run --rm -i \
   locke1979/tailscale-mcp-server:1.3.4
 ```
 
-Or use `docker compose` with `TAILSCALE_API_KEY` exported in the invoking environment:
+For Compose, use the Docker secret-file flow below:
 
 ```sh
 export TAILSCALE_API_KEY='tskey-api-...'
+docker compose run --rm tailscale-mcp
+```
+
+## Run with a Docker secret file
+
+Create the ignored secret file outside source control with restrictive permissions:
+
+```sh
+umask 077
+mkdir -p secrets
+$EDITOR secrets/tailscale_api_key
+```
+
+The container reads this file as `/run/secrets/tailscale_api_key` during startup. Do not commit it.
+Then start the connector:
+
+```sh
 docker compose run --rm tailscale-mcp
 ```
 

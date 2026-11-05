@@ -12,7 +12,12 @@ services:
       - no-new-privileges:true
     cap_drop:
       - ALL
+    secrets:
+      - tailscale_api_key
     environment:
-      TAILSCALE_API_KEY: ${TAILSCALE_API_KEY:?Set TAILSCALE_API_KEY in the environment}
       TAILSCALE_TAILNET: ${TAILSCALE_TAILNET:--}
       TAILSCALE_ALLOWED_TOOL_RISK: ${TAILSCALE_ALLOWED_TOOL_RISK:-read}
+
+secrets:
+  tailscale_api_key:
+    file: ./secrets/tailscale_api_key

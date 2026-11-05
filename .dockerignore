@@ -1,6 +1,7 @@
 .git
 .env
 .env.*
+secrets/*
 Dockerfile*
 docker-compose*.yml
 README.md
