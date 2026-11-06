@@ -26,13 +26,6 @@ docker run --rm -i \
   locke1979/tailscale-mcp-server:1.3.4
 ```
 
-For Compose, use the Docker secret-file flow below:
-
-```sh
-export TAILSCALE_API_KEY='tskey-api-...'
-docker compose run --rm tailscale-mcp
-```
-
 ## Run with a Docker secret file
 
 Create the ignored secret file outside source control with restrictive permissions:
